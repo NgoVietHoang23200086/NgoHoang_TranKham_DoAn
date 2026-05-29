@@ -1,0 +1,66 @@
+@page
+@model JobBoard.Web.Pages.Jobs.IndexModel
+@{ ViewData["Title"] = "Tìm kiếm việc làm"; }
+
+<div class="container py-4">
+    <h2 class="mb-4"><i class="bi bi-search"></i> Tìm kiếm việc làm</h2>
+    
+    <form method="get" class="card shadow-sm p-4 mb-4">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">Từ khóa</label>
+                <input type="text" name="keyword" value="@Model.Keyword" class="form-control" placeholder="vd: C#, Java, React..." />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Mức lương tối thiểu</label>
+                <input type="number" name="minSalary" value="@Model.MinSalary" class="form-control" placeholder="VNĐ" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Địa điểm</label>
+                <select name="location" class="form-select">
+                    <option value="">Tất cả</option>
+                    <option value="Hà Nội" selected="@(Model.Location == "Hà Nội")">Hà Nội</option>
+                    <option value="TP. Hồ Chí Minh" selected="@(Model.Location == "TP. Hồ Chí Minh")">TP. Hồ Chí Minh</option>
+                    <option value="Đà Nẵng" selected="@(Model.Location == "Đà Nẵng")">Đà Nẵng</option>
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100"><i class="bi bi-search"></i> Tìm</button>
+            </div>
+        </div>
+    </form>
+
+    <p class="text-muted">Tìm thấy <strong>@Model.Jobs?.Count()</strong> kết quả</p>
+
+    <div class="row g-4">
+        @if (Model.Jobs != null)
+        {
+            @foreach (var job in Model.Jobs)
+            {
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm border-0 job-card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a asp-page="/Jobs/Details" asp-route-id="@job.Id" class="text-decoration-none">@job.Title</a></h5>
+                            <p class="text-muted mb-1"><i class="bi bi-building"></i> @job.CompanyName</p>
+                            <p class="mb-1"><i class="bi bi-geo-alt text-danger"></i> @job.Location</p>
+                            <p class="mb-1"><i class="bi bi-cash text-success"></i> <strong>@job.Salary.ToString("N0") VNĐ/tháng</strong></p>
+                            <p class="mb-2"><i class="bi bi-tag"></i> @job.JobType</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                @foreach (var skill in job.RequiredSkills.Split(',', StringSplitOptions.TrimEntries))
+                                {
+                                    <span class="badge bg-primary bg-opacity-10 text-primary">@skill</span>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted"><i class="bi bi-clock"></i> Hết hạn: @job.ExpiryDate.ToString("dd/MM/yyyy")</small>
+                                <a asp-page="/Jobs/Details" asp-route-id="@job.Id" class="btn btn-sm btn-outline-primary">Chi tiết →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

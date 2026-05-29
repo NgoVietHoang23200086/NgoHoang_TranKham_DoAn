@@ -1,0 +1,23 @@
+@page
+@model JobBoard.Web.Pages.Jobs.CreateModel
+@{ ViewData["Title"] = "Đăng tin tuyển dụng"; }
+
+<div class="container py-4">
+    <h2><i class="bi bi-plus-circle"></i> Đăng tin tuyển dụng mới</h2>
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="alert @(Model.IsError ? "alert-danger" : "alert-success")">@Model.Message</div>
+    }
+    <form method="post" class="card shadow-sm p-4">
+        <div class="mb-3"><label class="form-label">Tiêu đề</label><input type="text" asp-for="JobDto.Title" class="form-control" required /></div>
+        <div class="mb-3"><label class="form-label">Mô tả công việc</label><textarea asp-for="JobDto.Description" class="form-control" rows="5" required></textarea></div>
+        <div class="row">
+            <div class="col-md-4 mb-3"><label class="form-label">Mức lương (VNĐ/tháng)</label><input type="number" asp-for="JobDto.Salary" class="form-control" required /></div>
+            <div class="col-md-4 mb-3"><label class="form-label">Địa điểm</label><input type="text" asp-for="JobDto.Location" class="form-control" required /></div>
+            <div class="col-md-4 mb-3"><label class="form-label">Loại công việc</label><select asp-for="JobDto.JobType" class="form-select"><option>Full-time</option><option>Part-time</option><option>Remote</option><option>Freelance</option></select></div>
+        </div>
+        <div class="mb-3"><label class="form-label">Kỹ năng yêu cầu (cách nhau bởi dấu phẩy)</label><input type="text" asp-for="JobDto.RequiredSkills" class="form-control" placeholder="C#, ASP.NET, SQL..." required /></div>
+        <div class="mb-3"><label class="form-label">Ngày hết hạn</label><input type="date" asp-for="JobDto.ExpiryDate" class="form-control" required /></div>
+        <button type="submit" class="btn btn-primary"><i class="bi bi-check-circle"></i> Đăng tin</button>
+    </form>
+</div>

@@ -1,0 +1,64 @@
+@page "{id:int}"
+@model JobBoard.Web.Pages.Jobs.DetailsModel
+@{ ViewData["Title"] = Model.Job?.Title ?? "Chi tiết"; }
+
+<div class="container py-4">
+    @if (Model.Job != null)
+    {
+        <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a asp-page="/Jobs/Index">Việc làm</a></li><li class="breadcrumb-item active">@Model.Job.Title</li></ol></nav>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="card-title mb-3">@Model.Job.Title</h2>
+                        <div class="mb-3">
+                            <span class="badge bg-success fs-6 me-2"><i class="bi bi-cash"></i> @Model.Job.Salary.ToString("N0") VNĐ/tháng</span>
+                            <span class="badge bg-info fs-6 me-2"><i class="bi bi-geo-alt"></i> @Model.Job.Location</span>
+                            <span class="badge bg-secondary fs-6"><i class="bi bi-tag"></i> @Model.Job.JobType</span>
+                        </div>
+                        <h5 class="mt-4">Mô tả công việc</h5>
+                        <p class="text-muted">@Model.Job.Description</p>
+                        <h5 class="mt-4">Kỹ năng yêu cầu</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            @foreach (var skill in Model.Job.RequiredSkills.Split(',', StringSplitOptions.TrimEntries))
+                            {
+                                <span class="badge bg-primary bg-opacity-10 text-primary fs-6">@skill</span>
+                            }
+                        </div>
+                        <p class="mt-3 text-muted"><i class="bi bi-clock"></i> Hết hạn: @Model.Job.ExpiryDate.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card shadow-sm border-0 mb-3">
+                    <div class="card-body text-center">
+                        <h5><i class="bi bi-building"></i> @Model.Job.CompanyName</h5>
+                        @if (HttpAccessor.HttpContext.Session.GetInt32("UserId") != null && HttpAccessor.HttpContext.Session.GetString("UserRole") == "Candidate")
+                        {
+                            <form method="post" enctype="multipart/form-data" class="mt-3">
+                                <div class="mb-3 text-start">
+                                    <label class="form-label fw-bold text-dark"><i class="bi bi-file-earmark-arrow-up"></i> Tải lên file CV của bạn:</label>
+                                    <input type="file" name="cvFile" class="form-control" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" required />
+                                    <div class="form-text small text-muted">Hỗ trợ các định dạng: PDF, Word (.doc, .docx) hoặc file ảnh.</div>
+                                </div>
+                                <input type="hidden" name="jobId" value="@Model.Job.Id" />
+                                <button type="submit" class="btn btn-primary btn-lg w-100"><i class="bi bi-send"></i> Ứng tuyển ngay</button>
+                            </form>
+                        }
+                        else if (HttpAccessor.HttpContext.Session.GetInt32("UserId") == null)
+                        {
+                            <a asp-page="/Account/Login" class="btn btn-outline-primary btn-lg w-100 mt-3">Đăng nhập để ứng tuyển</a>
+                        }
+                    </div>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.Message))
+                {
+                    <div class="alert @(Model.IsError ? "alert-danger" : "alert-success")">
+                        @Model.Message
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

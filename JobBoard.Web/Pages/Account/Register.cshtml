@@ -1,0 +1,58 @@
+@page
+@model JobBoard.Web.Pages.Account.RegisterModel
+@{ ViewData["Title"] = "Đăng ký"; }
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4"><i class="bi bi-person-plus"></i> Đăng ký tài khoản</h3>
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger">@Model.ErrorMessage</div>
+                    }
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Vai trò</label>
+                            <select asp-for="RegisterDto.Role" class="form-select" id="roleSelect">
+                                <option value="0">Ứng viên (Candidate)</option>
+                                <option value="1">Nhà tuyển dụng (Employer)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3"><label class="form-label">Họ tên</label><input type="text" asp-for="RegisterDto.Name" class="form-control" required /></div>
+                        <div class="mb-3"><label class="form-label">Email</label><input type="email" asp-for="RegisterDto.Email" class="form-control" required /></div>
+                        <div class="mb-3"><label class="form-label">Mật khẩu</label><input type="password" asp-for="RegisterDto.Password" class="form-control" required /></div>
+                        <div class="mb-3"><label class="form-label">Điện thoại</label><input type="text" asp-for="RegisterDto.Phone" class="form-control" /></div>
+                        
+                        <!-- Candidate Fields -->
+                        <div id="candidateFields">
+                            <div class="mb-3"><label class="form-label">Kỹ năng (cách nhau bởi dấu phẩy)</label><input type="text" asp-for="RegisterDto.Skills" class="form-control" placeholder="C#, Java, Python..." /></div>
+                            <div class="mb-3"><label class="form-label">Lương mong muốn (VNĐ/tháng)</label><input type="number" asp-for="RegisterDto.ExpectedSalary" class="form-control" /></div>
+                            <div class="mb-3"><label class="form-label">Địa điểm làm việc mong muốn</label><input type="text" asp-for="RegisterDto.PreferredLocation" class="form-control" /></div>
+                        </div>
+                        
+                        <!-- Employer Fields -->
+                        <div id="employerFields" style="display:none;">
+                            <div class="mb-3"><label class="form-label">Tên công ty</label><input type="text" asp-for="RegisterDto.CompanyName" class="form-control" /></div>
+                            <div class="mb-3"><label class="form-label">Mô tả công ty</label><textarea asp-for="RegisterDto.CompanyDescription" class="form-control"></textarea></div>
+                            <div class="mb-3"><label class="form-label">Địa chỉ công ty</label><input type="text" asp-for="RegisterDto.CompanyAddress" class="form-control" /></div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100">Đăng ký</button>
+                    </form>
+                    <p class="text-center text-muted mt-3">Đã có tài khoản? <a asp-page="/Account/Login">Đăng nhập</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+document.getElementById('roleSelect').addEventListener('change', function(){
+    document.getElementById('candidateFields').style.display = this.value === '0' ? 'block' : 'none';
+    document.getElementById('employerFields').style.display = this.value === '1' ? 'block' : 'none';
+});
+</script>
+}

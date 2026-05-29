@@ -1,0 +1,34 @@
+@page
+@model JobBoard.Web.Pages.Account.LoginModel
+@{ ViewData["Title"] = "Đăng nhập"; }
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4"><i class="bi bi-box-arrow-in-right"></i> Đăng nhập</h3>
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger">@Model.ErrorMessage</div>
+                    }
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" asp-for="LoginDto.Email" class="form-control" placeholder="email@example.com" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mật khẩu</label>
+                            <input type="password" asp-for="LoginDto.Password" class="form-control" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mb-3">Đăng nhập</button>
+                    </form>
+                    <p class="text-center text-muted">Chưa có tài khoản? <a asp-page="/Account/Register">Đăng ký ngay</a></p>
+                    <hr/>
+                    <p class="small text-muted text-center">Tài khoản test NTD: <code>employer1@jobboard.vn</code> / <code>123456</code></p>
+                    <p class="small text-muted text-center">Tài khoản test Ứng viên: <code>candidate1@jobboard.vn</code> / <code>123456</code></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
