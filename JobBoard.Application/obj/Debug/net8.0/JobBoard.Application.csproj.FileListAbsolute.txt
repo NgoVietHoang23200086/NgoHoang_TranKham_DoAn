@@ -1,0 +1,16 @@
+D:\Do_An_KTLTNC\src\JobBoard.Application\bin\Debug\net8.0\JobBoard.Application.deps.json
+D:\Do_An_KTLTNC\src\JobBoard.Application\bin\Debug\net8.0\JobBoard.Application.dll
+D:\Do_An_KTLTNC\src\JobBoard.Application\bin\Debug\net8.0\JobBoard.Application.pdb
+D:\Do_An_KTLTNC\src\JobBoard.Application\bin\Debug\net8.0\JobBoard.Domain.dll
+D:\Do_An_KTLTNC\src\JobBoard.Application\bin\Debug\net8.0\JobBoard.Domain.pdb
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\JobBoard.Application.csproj.AssemblyReference.cache
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\JobBoard.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\JobBoard.Application.AssemblyInfoInputs.cache
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\JobBoard.Application.AssemblyInfo.cs
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\JobBoard.Application.csproj.CoreCompileInputs.cache
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\JobBoard.93A6DEA3.Up2Date
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\JobBoard.Application.dll
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\refint\JobBoard.Application.dll
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\JobBoard.Application.pdb
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\ref\JobBoard.Application.dll
+D:\Do_An_KTLTNC\src\JobBoard.Application\obj\Debug\net8.0\JobBoard.Application.sourcelink.json

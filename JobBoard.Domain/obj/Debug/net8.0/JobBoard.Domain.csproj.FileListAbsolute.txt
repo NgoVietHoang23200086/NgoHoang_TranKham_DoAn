@@ -1,0 +1,12 @@
+D:\Do_An_KTLTNC\src\JobBoard.Domain\bin\Debug\net8.0\JobBoard.Domain.deps.json
+D:\Do_An_KTLTNC\src\JobBoard.Domain\bin\Debug\net8.0\JobBoard.Domain.dll
+D:\Do_An_KTLTNC\src\JobBoard.Domain\bin\Debug\net8.0\JobBoard.Domain.pdb
+D:\Do_An_KTLTNC\src\JobBoard.Domain\obj\Debug\net8.0\JobBoard.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Do_An_KTLTNC\src\JobBoard.Domain\obj\Debug\net8.0\JobBoard.Domain.AssemblyInfoInputs.cache
+D:\Do_An_KTLTNC\src\JobBoard.Domain\obj\Debug\net8.0\JobBoard.Domain.AssemblyInfo.cs
+D:\Do_An_KTLTNC\src\JobBoard.Domain\obj\Debug\net8.0\JobBoard.Domain.csproj.CoreCompileInputs.cache
+D:\Do_An_KTLTNC\src\JobBoard.Domain\obj\Debug\net8.0\JobBoard.Domain.dll
+D:\Do_An_KTLTNC\src\JobBoard.Domain\obj\Debug\net8.0\refint\JobBoard.Domain.dll
+D:\Do_An_KTLTNC\src\JobBoard.Domain\obj\Debug\net8.0\JobBoard.Domain.pdb
+D:\Do_An_KTLTNC\src\JobBoard.Domain\obj\Debug\net8.0\ref\JobBoard.Domain.dll
+D:\Do_An_KTLTNC\src\JobBoard.Domain\obj\Debug\net8.0\JobBoard.Domain.sourcelink.json
